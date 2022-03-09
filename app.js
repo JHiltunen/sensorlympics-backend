@@ -20,10 +20,11 @@ io.on('connection', (socket) => {
         
         count++;
         console.log(room_data);
-        io.emit('counter', room_data);   
+        //io.emit('counter', room_data);   
         //io.emit('data', room_data);
         //io.emit('xyCoordinates')
         socket.join(`${roomName}`);
+        socket.broadcast.to(`${roomName}`).emit('counter', room_data)
         // write new message of new user
         io.to(`${roomName}`).emit('newUserToChatRoom');
     });
