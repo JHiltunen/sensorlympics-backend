@@ -19,7 +19,7 @@ io.on('connection', (socket) => {
         const roomName = room_data.roomName;
         
         count++;
-        console.log("DATA", room_data);
+        console.log(room_data);
         io.emit('counter', room_data);   
         //io.emit('data', room_data);
         //io.emit('xyCoordinates')
