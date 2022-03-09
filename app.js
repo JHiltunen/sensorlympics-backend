@@ -9,14 +9,18 @@ app.use(express.static('public')); //show static files in 'pub lic' directory
 console. log('Server is running');
 const io = socket(server);
 var count = 0;
+var turn = "X";
+var xyCoordinates = ""
+
 //PS Socket.io Connection-
 io.on('connection', (socket) => {
     socket.on('create', function(room) {
         const room_data = JSON.parse(room)
         const roomName = room_data.roomName;
-    
+        
         count++;
         io.emit('counter', count);   
+        io.emit('xyCoordinates')
         socket.join(`${roomName}`);
         // write new message of new user
         io.to(`${roomName}`).emit('newUserToChatRoom');
@@ -30,7 +34,7 @@ io.on('newMessage',function(data) {
     const messageData = JSON.parse(data)
     const messageContent = messageData.content
     const roomName = messageData.roomName
-
+    console.log('message: ', messageContent);
     console.log(`[Room Number ${roomName}] : ${messageContent}`)
     // Just pass the data that has been passed from the writer socket
 
