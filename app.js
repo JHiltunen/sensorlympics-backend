@@ -30,7 +30,7 @@ io.on('connection', (socket) => {
         //io.to(`${roomName}`).emit('newUserToChatRoom');
     });
 
-    io.on('counter',function(data) {
+    socket.on('counter',function(data) {
         console.log("Counter")
     });
 
