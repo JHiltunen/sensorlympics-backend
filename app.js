@@ -30,7 +30,11 @@ io.on('connection', (socket) => {
         io.to(`${roomName}`).emit('newUserToChatRoom');
     });
 
-    io.on('newMessage',function(data) {
+    io.on('counter',function(data) {
+        console.log("Counter")
+    });
+
+    /*io.on('newMessage',function(data) {
         console.log('newMessage triggered')
     
         const messageData = JSON.parse(data)
@@ -46,7 +50,7 @@ io.on('connection', (socket) => {
         }
         console.log('JSON', JSON.stringify(chatData));
         socket.broadcast.to(`${roomName}`).emit('updateChat',JSON.stringify(chatData)) // Need to be parsed into Kotlin object in Kotlin
-    })
+    })*/
     console.log("New socket connection:" + socket.id);
 });
 
