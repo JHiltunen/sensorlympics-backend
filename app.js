@@ -24,10 +24,10 @@ io.on('connection', (socket) => {
         //io.emit('data', room_data);
         //io.emit('xyCoordinates')
         socket.join(`${roomName}`);
-        io.to(`${roomName}`).emit('counter', room_data);
+        //io.to(`${roomName}`).emit('counter', room_data);
         //socket.broadcast.to(`${roomName}`).emit('counter', room_data)
         // write new message of new user
-        io.to(`${roomName}`).emit('newUserToChatRoom');
+        //io.to(`${roomName}`).emit('newUserToChatRoom');
     });
 
     io.on('counter',function(data) {
