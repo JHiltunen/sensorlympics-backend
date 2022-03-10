@@ -32,7 +32,8 @@ io.on('connection', (socket) => {
 
     socket.on('counter',function(data) {
         console.log("Data", data);
-        //io.to(room_name).emit('chat message', msg);
+        const parameterData = JSON.parse(data);
+        io.to(parameterData.roomName).emit('counter', data);
         console.log("Counter");
     });
 
