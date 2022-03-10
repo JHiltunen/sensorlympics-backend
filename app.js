@@ -33,7 +33,8 @@ io.on('connection', (socket) => {
     socket.on('counter',function(data) {
         console.log("Data", data);
         const parameterData = JSON.parse(data);
-        io.to(parameterData.roomName).emit('counter', data);
+        socket.broadcast.to(parameterData.roomName).emit('counter', data);
+        //io.to(parameterData.roomName).emit('counter', data);
         console.log("Counter");
     });
 
