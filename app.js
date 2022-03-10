@@ -31,7 +31,9 @@ io.on('connection', (socket) => {
     });
 
     socket.on('counter',function(data) {
-        console.log("Counter")
+        console.log("Data", data);
+        //io.to(room_name).emit('chat message', msg);
+        console.log("Counter");
     });
 
     /*io.on('newMessage',function(data) {
