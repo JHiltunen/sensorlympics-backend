@@ -24,7 +24,7 @@ io.on('connection', (socket) => {
         io.emit('xyCoordinates')
         socket.join(`${roomName}`);
         // write new message of new user
-        io.to(`${roomName}`).emit('newUserToChatRoom');
+        io.to(`${roomName}`).emit('counter');
     });
     console.log("New socket connection:" + socket.id);
 });
