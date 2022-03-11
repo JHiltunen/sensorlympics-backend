@@ -20,12 +20,14 @@ io.on('connection', (socket) => {
         
         count++;
         console.log(room_data);
-        io.emit('counter', room_data);   
+        //io.emit('counter', room_data);   
+        // sending to all clients except sender
+        socket.broadcast.emit('counter', room_data);
         //io.emit('data', room_data);
         //io.emit('xyCoordinates')
-        socket.join(`${roomName}`);
+        //socket.join(`${roomName}`);
         // write new message of new user
-        io.to(`${roomName}`).emit('newUserToChatRoom');
+        //io.to(`${roomName}`).emit('newUserToChatRoom');
     });
 
     /*io.on('newMessage',function(data) {
