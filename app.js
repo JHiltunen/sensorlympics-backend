@@ -8,9 +8,6 @@ const server = app.listen(PORT); //tells to host server on localhost:3000
 app.use(express.static('public')); //show static files in 'pub lic' directory
 console. log('Server is running');
 const io = socket(server);
-var count = 0;
-var turn = "X";
-var xyCoordinates = ""
 
 //PS Socket.io Connection-
 io.on('connection', (socket) => {
@@ -18,10 +15,6 @@ io.on('connection', (socket) => {
         const room_data = JSON.parse(room)
         const roomName = room_data.roomName;
         
-        count++;
-        console.log("DATA", room_data);
-        io.emit('counter', count);   
-        io.emit('xyCoordinates')
         socket.join(`${roomName}`);
         // write new message of new user
         io.to(`${roomName}`).emit('counter');
