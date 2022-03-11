@@ -17,30 +17,8 @@ io.on('connection', (socket) => {
         
         socket.join(`${roomName}`);
         // write new message of new user
-        io.to(`${roomName}`).emit('counter');
+        //io.to(`${roomName}`).emit('counter');
+        socket.emit('counter', room_data);   
     });
     console.log("New socket connection:" + socket.id);
 });
-
-io.on('newMessage',function(data) {
-    console.log('newMessage triggered')
-
-    const messageData = JSON.parse(data)
-    const messageContent = messageData.content
-    const roomName = messageData.roomName
-    console.log('message: ', messageContent);
-    console.log(`[Room Number ${roomName}] : ${messageContent}`)
-    // Just pass the data that has been passed from the writer socket
-
-    const chatData = {
-        messageContent : messageContent,
-        roomName : roomName
-    }
-    console.log('JSON', JSON.stringify(chatData));
-    socket.broadcast.to(`${roomName}`).emit('updateChat',JSON.stringify(chatData)) // Need to be parsed into Kotlin object in Kotlin
-})
-
-/*io.sockets.in("room1").emit('counter', () => {
-    count++;
-    io. emit('counter', count);   
-});*/
