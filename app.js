@@ -14,7 +14,5 @@ io.on('connection', (socket) => {
         const tic_tac_toe_data = JSON.parse(room)
         socket.broadcast.emit('counter', tic_tac_toe_data);
     });
-
-    
     console.log("New socket connection:" + socket.id);
 });
